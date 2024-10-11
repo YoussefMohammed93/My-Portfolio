@@ -4,7 +4,7 @@ import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 
 const navItems = [
   { href: "/", label: "home" },
-  { href: "/", label: "expertise" },
+  { href: "#expertise", label: "expertise" },
   { href: "/", label: "work" },
   { href: "/", label: "experience" },
   { href: "/", label: "contact" },
@@ -33,9 +33,22 @@ export const Navbar = () => {
     };
   }, []);
 
+  const handleSmoothScroll = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <nav
-      className={`w-full flex items-center justify-start md:justify-between gap-x-5 md:gap-x-0 main-padding pt-2 pb-4 transition-all duration-500 md:duration-700 ease-in-out ${
+      className={`w-full flex items-center justify-start md:justify-between gap-x-5 z-50 md:gap-x-0 main-padding pt-2 pb-4 transition-all duration-500 md:duration-700 ease-in-out ${
         isScrolled
           ? "fixed top-0 z-20 bg-[#1a1a1c] shadow-xl opacity-100 translate-y-0"
           : "absolute top-0 opacity-90 translate-y-2"
@@ -57,6 +70,11 @@ export const Navbar = () => {
                     <Link
                       href={item.href}
                       className="text-lg font-medium text-black"
+                      onClick={(e) =>
+                        item.href.startsWith("#")
+                          ? handleSmoothScroll(e, item.href)
+                          : null
+                      }
                     >
                       {item.label}
                     </Link>
@@ -101,7 +119,14 @@ export const Navbar = () => {
               <span className="w-[10px] h-[20px] text-[10px] opacity-75">
                 {`0${index + 1}`}
               </span>
-              <Link href={item.href}>
+              <Link
+                href={item.href}
+                onClick={(e) =>
+                  item.href.startsWith("#")
+                    ? handleSmoothScroll(e, item.href)
+                    : null
+                }
+              >
                 <span className="mr-1">/ /</span> {item.label}
               </Link>
             </li>

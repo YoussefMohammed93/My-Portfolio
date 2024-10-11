@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Navbar } from "@/components/navbar";
 
@@ -18,6 +19,14 @@ export const Home = () => {
     };
 
     moveBall();
+  }, []);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-out-cubic",
+      once: true,
+    });
   }, []);
 
   return (
@@ -39,7 +48,10 @@ export const Home = () => {
       <div className="relative w-[50px] h-[50px] flex justify-center">
         <div className="absolute bottom-56 md:bottom-[16rem] left-24 lg:left-[124px] ball w-[50px] h-[50px] bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full shadow-[0_0_20px_12px_rgba(255,165,0,0.6)] transition-transform duration-300 ease-in-out"></div>
       </div>
-      <Link href="/" className="flex justify-center absolute bottom-10">
+      <div
+        className="flex justify-center absolute bottom-0 h-40"
+        data-aos="fade-up"
+      >
         <div className="w-[60px] h-[72px]">
           <svg className="arrows h-[72px]">
             <path className="a1" d="M0 0 L30 32 L60 0"></path>
@@ -47,7 +59,7 @@ export const Home = () => {
             <path className="a3" d="M0 40 L30 72 L60 40"></path>
           </svg>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };
