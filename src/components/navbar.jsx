@@ -6,8 +6,8 @@ const navItems = [
   { href: "/", label: "home" },
   { href: "#expertise", label: "expertise" },
   { href: "#work", label: "work" },
-  { href: "/", label: "experience" },
-  { href: "/", label: "contact" },
+  { href: "#experience", label: "experience" },
+  { href: "#", label: "contact" },
 ];
 
 export const Navbar = () => {
@@ -72,11 +72,10 @@ export const Navbar = () => {
                     <Link
                       href={item.href}
                       className="text-lg font-medium text-black"
-                      onClick={
-                        (e) =>
-                          item.href.startsWith("#")
-                            ? handleSmoothScroll(e, item.href)
-                            : setIsSheetOpen(false)
+                      onClick={(e) =>
+                        item.href.startsWith("#")
+                          ? handleSmoothScroll(e, item.href)
+                          : setIsSheetOpen(false)
                       }
                     >
                       {item.label}

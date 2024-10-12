@@ -118,7 +118,7 @@ export const Work = () => {
                     className={`object-cover object-center rounded-lg rounded-b-none transition-transform duration-300 ease-in-out ${
                       hoveredIndex === 3 ? "scale-105" : "scale-100"
                     }`}
-                    width={950}
+                    width={905}
                     height={400}
                   />
                   <div className="p-5">

@@ -3,6 +3,7 @@ import { Expertise } from "./expertise/expertise";
 import ScrollToTopButton from "@/components/scoll-to-top-button";
 import CustomCursor from "@/components/custom-cursor";
 import { Work } from "./work/work";
+import { Experience } from "./experience/experience";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Home />
       <Expertise />
       <Work />
+      <Experience />
       <CustomCursor />
       <ScrollToTopButton />
     </main>
