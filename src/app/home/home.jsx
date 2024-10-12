@@ -45,7 +45,10 @@ export const Home = () => {
           Computer Science Student, Front End Developer
         </p>
       </div>
-      <div className="relative w-[50px] h-[50px] flex justify-center">
+      <div
+        className="relative w-[50px] h-[50px] flex justify-center"
+        data-aos="zoom-out"
+      >
         <div className="absolute bottom-56 md:bottom-[16rem] left-24 lg:left-[124px] ball w-[50px] h-[50px] bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full shadow-[0_0_20px_12px_rgba(255,165,0,0.6)] transition-transform duration-300 ease-in-out"></div>
       </div>
       <div

@@ -5,7 +5,7 @@ import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
 const navItems = [
   { href: "/", label: "home" },
   { href: "#expertise", label: "expertise" },
-  { href: "/", label: "work" },
+  { href: "#work", label: "work" },
   { href: "/", label: "experience" },
   { href: "/", label: "contact" },
 ];
@@ -13,6 +13,7 @@ const navItems = [
 export const Navbar = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +36,7 @@ export const Navbar = () => {
 
   const handleSmoothScroll = (e, href) => {
     e.preventDefault();
+    setIsSheetOpen(false);
     const targetId = href.replace("#", "");
     const targetElement = document.getElementById(targetId);
 
@@ -55,7 +57,7 @@ export const Navbar = () => {
       }`}
     >
       <div className="md:hidden">
-        <Sheet>
+        <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild>
             <button className="bg-white/5 w-[48px] h-[48px] p-3.5 rounded-full hover:bg-white/10 transition-all duration-300 group">
               <span className="block w-5 h-[2px] my-1.5 bg-white group-hover:bg-[#6ddbed] transition-all duration-200"></span>
@@ -70,10 +72,11 @@ export const Navbar = () => {
                     <Link
                       href={item.href}
                       className="text-lg font-medium text-black"
-                      onClick={(e) =>
-                        item.href.startsWith("#")
-                          ? handleSmoothScroll(e, item.href)
-                          : null
+                      onClick={
+                        (e) =>
+                          item.href.startsWith("#")
+                            ? handleSmoothScroll(e, item.href)
+                            : setIsSheetOpen(false)
                       }
                     >
                       {item.label}
@@ -106,11 +109,11 @@ export const Navbar = () => {
           {navItems.map((item, index) => (
             <li
               key={index}
-              className={`relative flex flex-col items-end text-lg font-medium transition-all duration-300 ${
+              className={`relative flex flex-col items-end text-lg font-medium transition-all duration-500 ${
                 isScrolled ? "text-[#6ddbed]" : "text-white"
               } ${
                 hoveredIndex !== null && hoveredIndex !== index
-                  ? "opacity-50"
+                  ? "opacity-50 scale-[.85]"
                   : "opacity-100"
               }`}
               onMouseEnter={() => setHoveredIndex(index)}

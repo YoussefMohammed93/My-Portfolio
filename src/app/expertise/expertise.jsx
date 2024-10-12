@@ -15,8 +15,8 @@ export const Expertise = () => {
   }, []);
 
   return (
-    <div className="w-full main-padding bg-[#1a191d] py-20" id="expertise">
-      <div className="text-center">
+    <div className="w-full main-padding bg-[#1a191d] py-12" id="expertise">
+      <div className="text-center max-w-7xl mx-auto">
         <h2
           className="text-5xl sm:text-7xl font-black tracking-wide text-white pb-12"
           data-aos="fade-down"
@@ -62,7 +62,6 @@ export const Expertise = () => {
               </div>
             </div>
           </div>
-
           <div
             className="col-span-1 border-b-2 custom-md:border-b-0 custom-md:border-r-2 border-[#a3a3a3]"
             data-aos="fade-down"
@@ -103,7 +102,6 @@ export const Expertise = () => {
               </div>
             </div>
           </div>
-
           <div className="col-span-1" data-aos="fade-down" data-aos-delay="200">
             <div className="flex items-center space-x-5 p-8">
               <Image
@@ -140,6 +138,18 @@ export const Expertise = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div
+          className="flex items-center justify-center pt-12"
+          data-aos="zoom-in"
+        >
+          <Image
+            src="/code.webp"
+            className="h-[280px] sm:h-auto opacity-35"
+            alt="code"
+            width={500}
+            height={400}
+          />
         </div>
       </div>
     </div>
