@@ -1,19 +1,21 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Sheet, SheetTrigger, SheetContent } from "./ui/sheet";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   { href: "/", label: "home" },
   { href: "#expertise", label: "expertise" },
   { href: "#work", label: "work" },
   { href: "#experience", label: "experience" },
-  { href: "#", label: "contact" },
+  { href: "#contact", label: "contact" },
 ];
 
 export const Navbar = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,11 +38,13 @@ export const Navbar = () => {
 
   const handleSmoothScroll = (e, href) => {
     e.preventDefault();
-    setIsSheetOpen(false);
     const targetId = href.replace("#", "");
     const targetElement = document.getElementById(targetId);
 
-    if (targetElement) {
+    if (router.pathname !== "/") {
+      router.push(`/#${targetId}`);
+      setIsSheetOpen(false);
+    } else if (targetElement) {
       targetElement.scrollIntoView({
         behavior: "smooth",
         block: "start",

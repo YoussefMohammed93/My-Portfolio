@@ -4,7 +4,7 @@ import { Quote } from "lucide-react";
 
 export const Contact = () => {
   return (
-    <footer>
+    <footer id="contact">
       <div className="flex flex-col lg:grid lg:grid-cols-5 lg:grid-rows-4">
         <div className="order-1 lg:order-none col-span-2 row-span-4 main-padding bg-[#0e0e0e] text-white p-6">
           <h1 className="text-3xl lg:text-4xl font-bold font-sans">

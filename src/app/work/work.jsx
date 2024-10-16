@@ -13,18 +13,21 @@ export const Work = () => {
 
   const projects = [
     {
-      src: "/E-Commerce.png",
+      id: 1,
+      src: "/ecommecre.png",
       alt: "react-ecommerce",
       title: "Sneakers E-Commerce",
       category: "Front End",
     },
     {
-      src: "/E-Commerce-js.png",
+      id: 2,
+      src: "/ecommerce2.png",
       alt: "javascript-ecommerce",
       title: "JavaScript E-Commerce",
       category: "Front End",
     },
     {
+      id: 3,
       src: "/dashboard-bootstrap.png",
       alt: "dashboard",
       title: "Bootstrap Dashboard",
@@ -68,7 +71,7 @@ export const Work = () => {
                   onMouseLeave={() => setHoveredIndex(null)}
                   data-aos="flip-down"
                 >
-                  <Link href="/">
+                  <Link href={`/projects/${project.id}`}>
                     <Image
                       src={project.src}
                       alt={project.alt}
@@ -111,7 +114,7 @@ export const Work = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
                 data-aos="flip-down"
               >
-                <Link href="/">
+                <Link href={`/projects/4`}>
                   <Image
                     src="/slack.png"
                     alt="slack-clone"
