@@ -30,12 +30,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div
-      className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-center bg-cover"
-      style={{
-        backgroundImage: `url('./bg.jpg')`,
-      }}
-    >
+    <div className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-custom bg-center bg-cover">
       <Navbar />
       <div className="w-full flex flex-col items-center justify-center z-10 text-center gap-y-7 px-4 md:px-0">
         <h1 className="uppercase text-3xl sm:text-5xl md:text-7xl font-black text-white text-center">

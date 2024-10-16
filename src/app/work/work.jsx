@@ -56,7 +56,6 @@ export const Work = () => {
             <div data-aos="fade-right">
               <TabsTrigger value="front-end">Front End</TabsTrigger>
             </div>
-            <span className="mx-3 text-white">/</span>
             <div data-aos="fade-left">
               <TabsTrigger value="full-stack">Full Stack</TabsTrigger>
             </div>
@@ -114,7 +113,7 @@ export const Work = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
                 data-aos="flip-down"
               >
-                <Link href={`/projects/4`}>
+                <Link href="/projects/4">
                   <Image
                     src="/slack.png"
                     alt="slack-clone"
