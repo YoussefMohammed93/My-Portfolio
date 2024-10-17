@@ -3,6 +3,29 @@ import Image from "next/image";
 import { Quote } from "lucide-react";
 
 export const Contact = () => {
+  const contactLinks = [
+    {
+      name: "Email",
+      href: "mailto:ixyoussef46@gmail.com",
+    },
+    {
+      name: "Github",
+      href: "https://github.com/YoussefMohammed93",
+    },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=61552702670893",
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/youssef-mohammed-6893a031b/",
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/youssef_mohamed.93",
+    },
+  ];
+
   return (
     <footer id="contact">
       <div className="flex flex-col lg:grid lg:grid-cols-5 lg:grid-rows-4">
@@ -15,36 +38,21 @@ export const Contact = () => {
             <br />
             <span>Send me an email or contact me via instant message!</span>
           </p>
-          <ul className="mt-4 space-y-2">
-            <li className="font-mono text-xl lg:text-2xl font-semibold">
-              <Link href="mailto:ixyoussef46@gmail.com" target="_">
-                Email
-              </Link>
-            </li>
-            <li className="font-mono text-xl lg:text-2xl font-semibold">
-              <Link
-                href="https://www.facebook.com/profile.php?id=61552702670893"
-                target="_"
+          <ul className="mt-4 space-y-1">
+            {contactLinks.map((link, index) => (
+              <li
+                key={index}
+                className="font-mono text-xl lg:text-2xl font-semibold"
               >
-                Facebook
-              </Link>
-            </li>
-            <li className="font-mono text-xl lg:text-2xl font-semibold">
-              <Link
-                href="https://www.linkedin.com/in/youssef-mohammed-6893a031b/"
-                target="_"
-              >
-                LinkedIn
-              </Link>
-            </li>
-            <li className="font-mono text-xl lg:text-2xl font-semibold">
-              <Link
-                href="https://www.instagram.com/youssef_mohamed.93"
-                target="_"
-              >
-                Instagram
-              </Link>
-            </li>
+                <Link
+                  href={link.href}
+                  target="_"
+                  className="hover:text-white/80 transition-all duration-200"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="order-2 lg:order-none row-span-4 col-start-3 bg-[#923fe6] text-white p-6">
@@ -54,7 +62,7 @@ export const Contact = () => {
             </div>
             <div>
               <Image
-                src="/avatar1.png"
+                src="/Avatar1.png"
                 width={80}
                 height={80}
                 className="rounded-full border-2 border-white"
@@ -84,7 +92,7 @@ export const Contact = () => {
             </div>
             <div>
               <Image
-                src="/avatar2.png"
+                src="/Avatar2.png"
                 width={80}
                 height={80}
                 className="rounded-full border-2 border-white"
@@ -112,7 +120,7 @@ export const Contact = () => {
             </div>
             <div>
               <Image
-                src="/avatar3.png"
+                src="/Avatar3.png"
                 width={80}
                 height={80}
                 className="rounded-full border-2 border-white"

@@ -12,11 +12,11 @@ const navItems = [
 ];
 
 export const Navbar = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,16 +39,18 @@ export const Navbar = () => {
 
   const handleSmoothScroll = (e, href) => {
     e.preventDefault();
-    const targetId = href.replace("#", "");
-    const targetElement = document.getElementById(targetId);
 
-    if (router.pathname !== "/") {
-      router.push(`/#${targetId}`);
-      setIsSheetOpen(false);
-    } else if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+    if (href.startsWith("#")) {
+      const targetId = href.replace("#", "");
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        setIsSheetOpen(false);
+      }
+    } else {
+      router.push(href).then(() => {
+        setIsSheetOpen(false);
       });
     }
   };
@@ -88,11 +90,7 @@ export const Navbar = () => {
                         <Link
                           href={item.href}
                           className="text-lg font-medium text-black"
-                          onClick={(e) =>
-                            item.href.startsWith("#")
-                              ? handleSmoothScroll(e, item.href)
-                              : setIsSheetOpen(false)
-                          }
+                          onClick={(e) => handleSmoothScroll(e, item.href)}
                         >
                           {item.label}
                         </Link>
@@ -109,7 +107,6 @@ export const Navbar = () => {
               </SheetContent>
             </Sheet>
           </div>
-
           <div className="hidden md:flex flex-grow justify-center">
             <ol className="flex space-x-5 lg:space-x-10 list-none">
               {navItems.map((item, index) => (
@@ -130,11 +127,7 @@ export const Navbar = () => {
                   </span>
                   <Link
                     href={item.href}
-                    onClick={(e) =>
-                      item.href.startsWith("#")
-                        ? handleSmoothScroll(e, item.href)
-                        : null
-                    }
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
                   >
                     <span className="mr-1">/ /</span> {item.label}
                   </Link>
